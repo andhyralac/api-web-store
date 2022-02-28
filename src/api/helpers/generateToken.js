@@ -23,7 +23,7 @@ const tokenSign = async (user) => {
 /**
  * 
  * @param {string} token 
- * @returns {Boolean}
+ * @returns
  */
 const verifyToken = async (token) => {
    return jwt.verify(token, JWT_SECRET);
