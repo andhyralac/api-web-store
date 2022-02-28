@@ -20,4 +20,12 @@ const tokenSign = async (user) => {
 }
 
 
+/**
+ * 
+ * @param {string} token 
+ * @returns {Boolean}
+ */
+const verifyToken = async (token) => {
+   return jwt.verify(token, JWT_SECRET);
+}
 module.exports = { tokenSign };
