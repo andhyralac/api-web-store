@@ -1,17 +1,27 @@
-const UserRepository = require('../repositories/user.repository');
+const { request, response } = require('express');
 
-const { responseError, 
-        responseSuccess } = require('../helpers/response');
+const { encryptPassword } = require('../helpers/encrypt.password');
+const { responseError, responseSuccess } = require('../helpers/response');
+const UserRepository = require('../repositories/user.repository');
 
 
 class UserController {
-    constructor() {
-        this._repository = UserRepository;
-    }
+ 
+    async createUser(req = request, res = response) {
+        try {
+            const { names, surnames, email, newPassword, nickname, address, role, img} = req.body;
+            const password = encryptPassword(newPassword);
+            const user = await UserRepository.create({
+                names, surnames, email, password, nickname, address, role, img
+            });
 
-    async createUser(req, res) {
+            responseSuccess(req, res, user, 201);
 
+        } catch (error) {
+            responseError(req, res, 'Error interno', 500, error);
+        }
     }
 }
+
 
 module.exports = new UserController;
