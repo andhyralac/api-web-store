@@ -12,6 +12,17 @@ const encryptPassword = (password) => {
     return passwordEncrypt;
 }
 
+/**
+ * 
+ * @param {string} passwordPlain 
+ * @param {string} hashPassword 
+ * @returns {Boolena} comparePassword
+ */
+const comparePassword = (passwordPlain, hashPassword) => {
+    return bcryptjs.compare(passwordPlain, hashPassword);
+}
+
+
 module.exports = {
     encryptPassword
 }
