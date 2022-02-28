@@ -28,4 +28,9 @@ const tokenSign = async (user) => {
 const verifyToken = async (token) => {
    return jwt.verify(token, JWT_SECRET);
 }
-module.exports = { tokenSign };
+
+
+module.exports = { 
+   tokenSign,
+   verifyToken
+};
