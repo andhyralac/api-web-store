@@ -24,5 +24,6 @@ const comparePassword = (passwordPlain, hashPassword) => {
 
 
 module.exports = {
-    encryptPassword
+    encryptPassword,
+    comparePassword
 }
