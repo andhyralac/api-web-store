@@ -22,6 +22,22 @@ class CategoryController {
             responseError(req, res, 'Error interno', 500, error);
         }
     }
+
+    /**
+     * function to get all categories
+     * @param {*} req  
+     * @param {*} res 
+     */
+    async getAllCategory(req = request, res = response) {
+        try {
+            
+            const categories = await CategoryRepository.get({});
+            responseSuccess(req, res, categories, 200);
+
+        } catch (error) {
+            responseError(req, res, 'Error interno al obtener las categorias', 500, error);
+        }
+    } 
 }
 
 module.exports = new CategoryController;
