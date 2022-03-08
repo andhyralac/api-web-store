@@ -31,7 +31,7 @@ class CategoryController {
     async getAllCategory(req = request, res = response) {
         try {
             
-            const categories = await CategoryRepository.get({});
+            const categories = await CategoryRepository.get({ "available": true });
             responseSuccess(req, res, categories, 200);
 
         } catch (error) {
@@ -50,7 +50,7 @@ class CategoryController {
 
             const category = await CategoryRepository.getById(id);
             responseSuccess(req, res, category, 200);
-            
+
         } catch (error) {
             responseError(req, res, 'Error interno al obtener la categoria', 500, error);
         }
