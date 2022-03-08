@@ -31,7 +31,7 @@ class CategoryController {
     async getAllCategory(req = request, res = response) {
         try {
             
-            const categories = await CategoryRepository.get({ "available": true });
+            const categories = await CategoryRepository.getAll();
             responseSuccess(req, res, categories, 200);
 
         } catch (error) {
