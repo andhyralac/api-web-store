@@ -16,5 +16,10 @@ router.get('/:id', validateToken, CategoryController.getCategoryById);
 
 
 
+// router for update category
+router.patch('/:id', validateToken, CategoryController.updateCategory);
+
+
+
 
 module.exports = router;
