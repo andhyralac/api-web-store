@@ -5,6 +5,11 @@ class CategoryRepository extends BaseRepository {
     constructor() {
         super(Category);
     }
+
+    async getAll() {
+        return await this.model.find({ "available": true })
+                               .populate('user', 'names');
+    }
 }
 
 
