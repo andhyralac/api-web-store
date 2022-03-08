@@ -1,7 +1,7 @@
 const { request, response } = require('express');
 
 const { encryptPassword } = require('../helpers/encrypt.password');
-const { generateToken } = require('../helpers/generateToken');
+const { tokenSign } = require('../helpers/generateToken');
 const { responseError, responseSuccess } = require('../helpers/response');
 const UserRepository = require('../repositories/user.repository');
 
@@ -16,7 +16,7 @@ class UserController {
                 names, surnames, email, password, nickname, address, role, img
             });
 
-            const tokenSession = await generateToken(user);
+            const tokenSession = await tokenSign(user);
             responseSuccess(req, res, { token: tokenSession }, 201);
 
         } catch (error) {
