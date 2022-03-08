@@ -56,6 +56,26 @@ class CategoryController {
         }
     }
 
+    /**
+     * Function to update category
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async updateCategory(req = request, res = response) {
+        try {
+            const { id } = req.params;
+            const data = {
+                name: req.body.name,
+                user: req.user._id
+            }
+
+            const updatedCategory = await CategoryRepository.update(id, data);
+            responseSuccess(req, res, updatedCategory, 200);
+
+        } catch (error) {
+            responseError(req, res, 'Error interno al actualizar la categoria', 500, error);
+        }
+    }
 
 }
 
