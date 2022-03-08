@@ -11,6 +11,9 @@ CategoryController.createCategory);
 router.get('/', validateToken, CategoryController.getAllCategory);
 
 
+// router for get category by id
+router.get('/:id', validateToken, CategoryController.getCategoryById);
+
 
 
 
