@@ -7,8 +7,9 @@ const { JWT_SECRET } = require('../../config/default');
  * @returns token
  */
 const tokenSign = async (user) => {
+
    const payload = {
-      uid: user.uid,
+      uid: user._id,
       role: user.role
    }
 
