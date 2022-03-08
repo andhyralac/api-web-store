@@ -7,4 +7,11 @@ const { validateToken } = require('../middleware/validateToken');
 router.post('/', validateToken,
 CategoryController.createCategory);
 
+// router for get all the categories
+router.get('/', validateToken, CategoryController.getAllCategory);
+
+
+
+
+
 module.exports = router;
